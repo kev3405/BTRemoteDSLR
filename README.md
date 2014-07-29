@@ -6,8 +6,8 @@ Fernsteuerung eine Canon DSLR (Stereo Klinkenstecker) über ein Bundle aus einen
 Protokoll
 ---------------------------------------------------------------------
 Es werden stets 4 Byte übertragen. Dies dient einer einfachen Schnittstellenimplementierung!
-1. Byte: Definition des Inhaltes
-3. - 4. Byte. Inhalt
+* 1. Byte: Definition des Inhaltes
+* 3. - 4. Byte. Inhalt
 
 **bisherige Festlegungen**
 * allgemeine Einstellungen
