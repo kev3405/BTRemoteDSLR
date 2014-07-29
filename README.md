@@ -9,7 +9,7 @@ Es werden stets 4 Byte übertragen. Dies dient einer einfachen Schnittstellenimp
 1. Byte: Definition des Inhaltes
 3. - 4. Byte. Inhalt
 
-** bisherige Festlegungen **
+**bisherige Festlegungen**
 * allgemeine Einstellungen
 	- 1. Byte: 0x1
 	- 2. - 4. Byte: 0x1 (Log aktiv) / 0x0 (Log inaktiv)
