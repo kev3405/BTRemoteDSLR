@@ -3,12 +3,13 @@ BTRemoteDSLR
 
 Fernsteuerung eine Canon DSLR (Stereo Klinkenstecker) über ein Bundle aus einen Arduino mit Bluetooth und einer Android App.
 
-**Protokoll**
+Protokoll
+---------------------------------------------------------------------
 Es werden stets 4 Byte übertragen. Dies dient einer einfachen Schnittstellenimplementierung!
 1. Byte: Definition des Inhaltes
 3. - 4. Byte. Inhalt
 
-*** bisherige Festlegungen ***
+** bisherige Festlegungen **
 * allgemeine Einstellungen
 	- 1. Byte: 0x1
 	- 2. - 4. Byte: 0x1 (Log aktiv) / 0x0 (Log inaktiv)
