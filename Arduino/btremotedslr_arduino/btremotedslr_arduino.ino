@@ -1,6 +1,6 @@
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Definitionen für physikalischen Zugriff
-int focus = 9;
+int control_bt = 9;
 int shoot = 8;
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -25,9 +25,9 @@ void setup() {
     pictureCount = 0;
   
     //Schnittstelle zur DSLR
-    pinMode(focus, OUTPUT);
+    pinMode(control_bt, OUTPUT);
     pinMode(shoot, OUTPUT);
-    digitalWrite(focus, LOW);
+    digitalWrite(control_bt, LOW);
     digitalWrite(shoot, LOW);
   
     //Schnittstelle zum Bluetooth Modul
@@ -35,6 +35,9 @@ void setup() {
 }
 
 void loop() {
+  // Aktivierung des BT Moduls für nächsten Kommunikationszyklus
+  digitalWrite(control_bt, HIGH);
+  
   //sind 3 Bytes empfangen?
   while(Serial.available() < 3);
   
@@ -42,7 +45,7 @@ void loop() {
   vReceive[0] = Serial.read();  
   vReceive[1] = Serial.read();
   vReceive[2] = Serial.read();
-
+  
   time_interval = vReceive[0];
   pictureCount = (((uint16_t) vReceive[1]) << 8) | ((uint16_t) vReceive[2]);
   
@@ -50,8 +53,8 @@ void loop() {
   Serial.print("Picture Count: "); Serial.println(pictureCount, DEC);
   
   //antworten!
-  Serial.print(0xFF); 
-
+  //Serial.print(0xFF); 
+  
   //Daten verarbeiten ... in dieser Zeit werden keine neuen Daten empfangen!!
   for(uint16_t i = 0; i < pictureCount; i++)
   {
@@ -65,4 +68,8 @@ void loop() {
       delay(1000);
     }
   }  
+  
+  //Zurücksetzen des BT Moduls für nächsten Zyklus
+  digitalWrite(control_bt, LOW);
+  delay(2000);
 }
